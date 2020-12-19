@@ -1,0 +1,5 @@
+package-scripts.js
+jest.config.js
+test/preprocessor.js
+commands/*
+dist/*

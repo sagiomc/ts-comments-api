@@ -24,6 +24,7 @@ or [onion architecture](http://jeffreypalermo.com/blog/the-onion-architecture-pa
 * Flags personally identifiable information (English only via [Content Moderator](https://contentmoderator.cognitive.microsoft.com))
 * Dependency Injection done with the nice framework from [Awilix](https://github.com/jeffijoe/awilix).
 * OpenAPI documentation done by [Swagger UI Express](https://github.com/scottie1984/swagger-ui-express).
+* Simplify npm scripting using [nps](https://github.com/sezna/nps).
 
 ## Prerequisites
 To build and run this service locally you have two options:
@@ -66,7 +67,7 @@ Copy the content of `sampledotenv` and fill the appropriate values.
 
    **NOTE**: To change the default values running with Docker, you have to add the following environment variables to `.env` file:
     ```dotenv
-    HOST_APP_PORT=<PORT> # Port where you'll consume the api from your host machine Ej. HOST_APP_PORT=8080 --> localhost:8080
+    HOST_PORT=<PORT> # Port where you'll consume the api from your host machine Ej. HOST_PORT=8080 --> localhost:8080
     HOST_INSPECT_PORT=<PORT> # Port where you'll inspect the api for debug purposes Ej. HOST_INSPECT_PORT=9229 --> Open socket in localhost:9229   
     HOST_DB_PORT=<PORT> # Port where you'll consume the database server from your host machine Ej HOST_DB_PORT=27029 --> mongodb://localhost:27029
     ```

@@ -1,0 +1,15 @@
+# Save this file as .env and fill in the appropriate values
+NODE_ENV=development
+# If you run this service via docker-compose, you have to change the host: mongodb://mongodb:27017
+COMMENTS_API_DATABASE_URL=mongodb://localhost:27017
+COMMENTS_API_DATABASE_NAME=comments-api-db
+API_ROOT=/api
+
+# Signup for a free Moderator key at:
+# https://contentmoderator.cognitive.microsoft.com
+MODERATOR_API_KEY=<your-moderator-key>
+MODERATOR_API_URL=https://<your-region>.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen
+
+# Signup for a free Akismet Spam API key at:
+# https://akismet.com/development/api/#getting-started
+SPAM_API_URL=https://<your-spam-key>.rest.akismet.com/1.1/comment-check

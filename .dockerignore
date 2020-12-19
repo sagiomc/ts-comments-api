@@ -1,0 +1,17 @@
+node_modules
+dist
+npm-debug.log
+*npm-start.command*
+*Dockerfile*
+*docker-compose*
+.git
+.gitignore
+.vscode
+.idea
+.travis.yml
+.editorconfig
+appveyor.yml
+yarn.lock
+LICENSE
+README.md
+.DS_Store

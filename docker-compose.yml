@@ -1,0 +1,58 @@
+version: "3.8"
+
+networks:
+  microservices-network:
+
+volumes:
+    mongodata:
+    notused:
+
+services:
+  app:
+    restart: on-failure
+    depends_on:
+      - mongodb
+      - mongodb-indexes
+    build:
+      context: .
+      target: build
+    # NOTE: if nodemon isn't restarting on changes, you might be on Windows
+    # which has trouble seeing file changes, so add -L to use legacy polling
+    # https://github.com/remy/nodemon#application-isnt-restarting
+    command: nodemon -r dotenv/config --watch src --watch .env --inspect=0.0.0.0:9229
+    environment:
+      - PORT=3000
+    networks:
+      - microservices-network
+    ports:
+      - "${HOST_PORT:-3000}:${PORT:-3000}"
+      - "${HOST_INSPECT_PORT:-9229}:9229"
+    volumes:
+      - .:/opt/node_app/app:delegated
+      - ./package.json:/opt/node_app/package.json
+      - ./package-lock.json:/opt/node_app/package-lock.json
+      - notused:/opt/node_app/app/node_modules
+    links:
+      - mongodb
+
+  mongodb:
+    restart: always
+    image: mongo:latest
+    networks:
+      - microservices-network
+    volumes:
+     - mongodata:/mongodata/app/data/db
+    ports:
+      - "${HOST_DB_PORT:-27017}:27017"
+
+  mongodb-indexes:
+    build:
+      context: .
+      target: build
+    networks:
+      - microservices-network
+    depends_on:
+      - mongodb
+    command: npm start db
+    links:
+      - mongodb

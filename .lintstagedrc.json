@@ -1,0 +1,5 @@
+{
+  "*.ts": [
+    "eslint -c ./.eslintrc.js --ext .ts 'src/**' --format stylish --fix"
+  ]
+}
